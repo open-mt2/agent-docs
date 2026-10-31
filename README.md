@@ -12,6 +12,7 @@ repository that contains no client sources.
 | `AGENTS.md`              | Global agent instructions. Repository-local `AGENTS.md` files add build, test and environment details. |
 | `docs/agents/`           | Agent skills: issue tracker, triage labels, domain docs.             |
 | `docs/agents/repos/`     | Repository-local guides (build, test and environment details).       |
+| `parity/`                | Archived devkit parity plan, task sheet and per-task evidence.        |
 | `scratch/issue-review/`  | Archived AI-generated issue rewrite drafts (October 2026). Historical, not current guidance. |
 
 Imported from `open-mt2/devkit@023fb8a` (paths `AGENTS.md`, `docs/agents/` and

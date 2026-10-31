@@ -29,9 +29,9 @@ scripts/fetch-windows-python.sh  vendored Windows CPython 2.7
 scripts/bake-trees.sh       SpeedTree geometry cache baker (needs Wine)
 scripts/golden-check.sh     render/API/transcript baselines
 scripts/sources.map         source repositories and their order
-docs/planning/              the parity plan and the task sheet (tracked)
-evidence/                   per-task command output and notes (tracked)
+docs/feature-matrix.md      generated fixed-function matrix (checked by ctest)
 golden/                     pinned render/format/test baselines (tracked)
+parity/ (agent-docs)        historical plan, task sheet and evidence
 src/                        materialized sources (gitignored)
 bin/                        client assets (gitignored, ~2.3 GB)
 build/ dist/ treecache/     generated (gitignored)
@@ -39,24 +39,24 @@ build/ dist/ treecache/     generated (gitignored)
 
 ## Read first
 
-1. [`docs/planning/windows-parity.md`](https://github.com/open-mt2/devkit/blob/main/docs/planning/windows-parity.md)
-   — the cross-platform / no-proprietary plan.
-2. [`docs/planning/windows-parity-tasks.md`](https://github.com/open-mt2/devkit/blob/main/docs/planning/windows-parity-tasks.md)
-   — the **execution source of truth**: 38 tasks, 16 decisions, per-task size,
+1. [`parity/docs/planning/windows-parity.md`](../../../parity/docs/planning/windows-parity.md)
+   — the archived cross-platform / no-proprietary plan.
+2. [`parity/docs/planning/windows-parity-tasks.md`](../../../parity/docs/planning/windows-parity-tasks.md)
+   — the archived execution sheet: 38 tasks, 16 decisions, per-task size,
    dependencies, verification command and evidence rules. Wave B is closed; the
-   only open scope is the deferred Wave 5.
+   only open scope is the deferred Wave 5. The sheet is historical — do not
+   edit it for new work.
 
-Update the task sheet as you work: tick decisions, claim tasks with `- [~]` +
-`owner:`, close them with `- [x]` + the evidence path, and keep the counters in
-§1 accurate.
+The per-task output is archived under `parity/evidence/` for history. New work
+still uses GitHub issues (see below); there is no live task sheet anymore.
 
 ## Tracking
 
-Every task is mirrored as an issue in `open-mt2/devkit`, titled `[<ID>] <title>`,
-with one milestone per wave and the `parity` label. The task sheet is the source
-of truth for scope and state; the issues are the progress view and the place PRs
-close (`Closes #<n>`). Assign the issue to yourself when you claim a task, and
-keep the sheet's checkbox, owner and counters in sync.
+New work is tracked as an issue in `open-mt2/devkit`, titled `[<ID>] <title>`,
+with the `parity` label. The historical task sheet in `parity/` records the
+closed Waves A–B, 0–4 and the deferred Wave 5; the issues are the progress view
+and the place PRs close (`Closes #<n>`). Assign the issue to yourself when you
+claim it.
 
 ## Build and test
 
