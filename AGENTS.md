@@ -13,6 +13,17 @@ they conflict with this file on a local matter, the local file wins.
   evidence rules.
 - **`open-mt2/docs`** — user-facing documentation.
 
+## Repository-local guides
+
+Build, test and environment details live in this repository, not in each
+checkout:
+
+- **devkit** — `docs/agents/repos/devkit.md` (image, build/test/smoke/golden
+  commands, container rules, repository topology).
+
+A repository may keep a short `AGENTS.md` that only points here so an agent
+starting in that checkout finds the guide.
+
 ## Tracking
 
 Every parity task is mirrored as an issue in `open-mt2/devkit`, titled
