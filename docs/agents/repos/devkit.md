@@ -70,8 +70,12 @@ docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
   -v "$PWD/src:/workspace/src" \
   -v "$PWD/build:/workspace/build" \
   -v "$PWD/dist:/workspace/dist" \
+  -v "$PWD/docs:/workspace/docs" \
   openmt2/client -t --skip-pack
 ```
+
+The `docs/` mount supplies the checked-in feature matrix; the image also copies
+it (so a rebuilt image works without the mount).
 
 Rules for container runs:
 
