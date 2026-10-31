@@ -23,7 +23,7 @@ This repo is **single-context**: one `GLOSSARY.md` and one `docs/adr/` at the ro
 └── src/
 ```
 
-Multi-context (presence of `GLOSSARY-MAP.md` at the root) is not used here. `src/` holds 16 fetched `pkg_*` repositories and is not tracked, so per-context glossaries would have nowhere durable to live.
+Multi-context (presence of `GLOSSARY-MAP.md` at the root) is not used here. `src/` holds the three fetched repositories (`neoeter`, `neoeter-python`, `client`) and is not tracked, so per-context glossaries would have nowhere durable to live.
 
 ```
 /
