@@ -51,6 +51,10 @@ the `deferred` label.
    must be separate commits from behaviour changes.
 7. **Evidence.** Every closed task writes `evidence/<ID>.md` with the command,
    before/after output, and notes.
+8. **No comments.** Never add comments to code, scripts, Dockerfiles, workflows
+   or configuration — no inline notes, no rationale blocks, no section banners.
+   If a comment looks necessary (a file header, a non-obvious flag), stop and
+   ask the user; add it only if they agree.
 
 ## GitHub CLI
 
