@@ -51,6 +51,55 @@ the `deferred` label.
    must be separate commits from behaviour changes.
 7. **Evidence.** Every closed task writes `evidence/<ID>.md` with the command,
    before/after output, and notes.
+8. **Keep scratch space off the checkout.** Generated files live under
+   `.local`, which must be mapped to a temporary directory of the host. See
+   [Local scratch space](#local-scratch-space).
+
+## Local scratch space
+
+`.local/` is the scratch area of a checkout: build logs, fetched artifacts,
+temporary `dist/` trees and anything else generated for testing. Never keep it
+on the repository filesystem — map `.local` to a temporary directory of the
+host so it is cleaned on reboot and does not bloat the checkout or the Docker
+build context.
+
+Linux:
+
+```bash
+ln -s "$(mktemp -d "${TMPDIR:-/tmp}/openmt2-local.XXXXXX")" .local
+```
+
+macOS:
+
+```bash
+ln -s "$(mktemp -d "${TMPDIR:-/var/tmp}/openmt2-local.XXXXXX")" .local
+```
+
+Windows (`cmd`, no administrator rights needed — a junction, not a symlink):
+
+```bat
+mkdir "%TEMP%\openmt2-local" 2>nul
+mklink /J .local "%TEMP%\openmt2-local"
+```
+
+Windows (PowerShell):
+
+```powershell
+$target = Join-Path $env:TEMP 'openmt2-local'
+New-Item -ItemType Directory -Force $target | Out-Null
+New-Item -ItemType Junction -Path .local -Target $target
+```
+
+Rules:
+
+- Remove an existing real `.local` directory before creating the mapping; it
+  only holds generated files.
+- Each repository's `.gitignore` must contain `.local` **without a trailing
+  slash**. A symlink or junction is not a directory to Git, so `.local/` does
+  not ignore it.
+- The mapping is per machine and is never committed.
+- Docker mounts of `.local/...` follow the link on Linux and macOS. On Windows,
+  pass the resolved `%TEMP%` path to `-v` if the junction is not followed.
 
 ## GitHub CLI
 
